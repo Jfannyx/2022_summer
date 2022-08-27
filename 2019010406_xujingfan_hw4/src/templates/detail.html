@@ -1,0 +1,22 @@
+{% extends "main_page.html" %}
+{% load static %}
+{% block mainbody %}
+<div clas="text-center">
+    <div class="container text-center">
+        <p>任务名称：{{task_name}}</p>
+        <p>发起人：{{username}}</p>
+        <p>持续时间：{{last_time}}</p>
+        <p>任务状态：{% if status %} 已完成 {% else %} 训练中 {% endif %}</p>
+        {% if logger_list %}
+            {% for log in logger_list %}
+                <p>{{log}}</p>
+            {%endfor%}
+        {%endif%}
+        
+        {% if task_id %}
+        <img src = "/static/pic/{{task_id}}.png" alt="loss" width="400px" height="300px">
+        {% endif %}
+
+</div>
+</div>
+{% endblock %}

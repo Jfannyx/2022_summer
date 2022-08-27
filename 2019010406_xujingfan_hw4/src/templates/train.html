@@ -1,0 +1,69 @@
+{% extends "main_page.html" %}
+{% load static %}
+{% block mainbody %}
+<div class="text-center"style="margin-bottom: 50px;">
+  
+    <div class="container" style="width:500px;height:30px;">
+      <div class="jumbotron">
+    <form action="{% url 'train' %}" method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="task_name">训练任务名称</label>
+        <br/>
+        <input name="task_name"type="text" style="width: 200px;height:30px;text-align: center;">
+      </div>
+
+      <div class="form-group">
+        <label for="username">发起人</label>
+        <br/>
+        <input name="username" type="text"style="width: 200px;height:30px;text-align: center;">
+      </div>
+
+      <div class="form-group">
+        <label for="structure">模型结构</label>
+        <br/>
+        <select class="form-control"name="structure" style="width: 200px;height:30px;text-align: center;margin-left: 75px">
+          <option>LeNet</option>
+          <option>LeNet with an added layer</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="optimizer">优化器</label>
+        <br/>
+        <select class="form-control"name="optimizer" style="width: 200px;height:30px;text-align: center;margin-left: 75px">
+          <option>Adam</option>
+          <option>SGD</option>
+        </select>
+      </div>
+      
+        <div class="form-group">
+          <label for='learning_rate'>学习率</label>
+          <br/>
+          <input name='learning_rate' type="text" placeholder="0.001"style="width: 200px;height:30px;text-align: center;">
+        </div>
+
+        <div class="form-group">
+          <label for="batch_size">批次大小</label>
+          <br/>
+          <input name="batch_size" type="text" placeholder="235"style="width: 200px;height:30px;text-align: center;">
+        </div>
+
+        <div class="form-group">
+          <label for="epochs">训练总轮次</label>
+          <br/>
+          <input name="epochs"type="text" placeholder="10"style="width: 200px;height:30px;text-align: center;">
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="提交" style="vertical-align:middle"/>
+            <span>  必须填写任务名称和发起人，其他参数若无输入，则使用默认值</span>
+        </div>
+    </form>
+  </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

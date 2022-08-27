@@ -1,0 +1,32 @@
+{% extends "main_page.html" %}
+{% load static %}
+{% block mainbody %}
+<div class="text-center" style="margin-top:50px; margin-bottom: 50px;">
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>任务名称</th>
+                    <th>发起人</th>
+                    <th>发起时间</th>
+                    <th>状态</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for task in task_list %}
+                <tr>
+                    <th>{{ task.id }}</th>
+                    <th><a href="../detail{{task.id}}/ ">{{ task.task_name }}</a></th>
+                    <th>{{ task.username }}</th>
+                    <th>{{task.init_time}}</th>
+                    <th>{% if task.status %} 已完成 {% else %} 训练中 {% endif %}</th>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
